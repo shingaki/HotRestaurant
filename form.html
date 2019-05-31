@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<div class=container>
+    <!-- Jumbotron with Title -->
+    <div class="jumbotron">
+        <h1 class="text-center">
+            <strong>Reservations</strong>
+        </h1>
+        <br>
+        <div class="text-center">
+            <a href="/view">
+            <button class="btn btn-primary btn-md theme-button"><span class="fa fa-fire"></span> View Reservations</button>
+        </a>
+            <a href="/">
+                <button class="btn btn-danger btn-md theme-button"><span class="fa fa-home"></span> Home</button>
+            </a>
+        </div>
+    </div>
+
+<div class="card">
+    <div class="card-header">
+        <h3><strong>Create Reservation</strong></h3>
+    </div>
+    <div class="card-body">
+        <form method="POST" role="form">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="number" class="form-control" id="phone-number">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email">
+            </div>
+
+            <div class="form-group">
+                <label for="customer-ID">Customer ID</label>
+                <input type="text" class="form-control" id="customer-ID">
+            </div>
+
+        </form>
+        <button type="submit" class="btn btn-success btn-md" id="add-btn"><span class="fa fa-fire"></span> Add Reservation</button>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    // Question: What does this code do?
+    $("#add-btn").on("click", function(event) {
+        console.log("button pushed");
+        event.preventDefault();
+        var newReservation = {
+            name: $("#name").val().trim(),
+            number: $("#phone-number").val().trim(),
+            email: $("#email").val().trim(),
+            customerid: $("#customer-ID").val().trim()
+        };
+
+        // Question: What does this code do??
+        $.post("/api/reservations", newReservation)
+            .then(function(data) {
+                console.log("index.html", data);
+            });
+    });
+</script>
+</body>
+</html>

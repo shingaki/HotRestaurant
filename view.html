@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hot Restaurants</title>
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<div class=container>
+    <!-- Jumbotron with Title -->
+    <div class="jumbotron">
+        <h1 class="text-center">
+            <strong>Hot Restaurants</strong>
+        </h1>
+        <hr>
+        <h4 class="text-center">Current Restaurants and Waiting List</h4>
+        <br>
+        <div class="text-center">
+            <a href="/view">
+                <button class="btn btn-primary btn-md theme-button"><span class="fa fa-fire"></span> Add Reservations</button>
+            </a>
+            <a href="/">
+                <button class="btn btn-danger btn-md theme-button"><span class="fa fa-home"></span> Home</button>
+            </a>
+        </div>
+    </div>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Current Reservations</h4>
+    </div>
+
+    <div class="card-body">
+        <ul id="tableList" class="list-group">
+
+        </ul>
+    </div>
+</div>
+<br><br>
+    <div class="card">
+        <div class="card-header">
+            <h4>Waiting List</h4>
+        </div>
+
+        <div class="card-body">
+            <ul id="waitList" class="list-group">
+
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
