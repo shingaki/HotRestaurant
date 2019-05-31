@@ -36,9 +36,10 @@
     </div>
 
     <div class="card-body">
-        <ul id="tableList" class="list-group">
-
-        </ul>
+        <div id="name"></div>
+        <div id="phone-number"></div>
+        <div id="email"></div>
+        <div id="customer-ID"></div>
     </div>
 </div>
 <br><br>
@@ -57,3 +58,19 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    $.get("/api/viewreservations" , function(data) {
+    console.log(data);
+    if (data) {
+        $("#name").text(data.name);
+        $("#phone-number").text(data.number);
+        $("#email").text(data.email);
+        $("#customer-ID").text(data.customerid);
+    }
+    else {
+        $("#name").text("The force is not strong with this one. Your character was not found.");
+        $("#email").hide();
+    }
+});
+</script>

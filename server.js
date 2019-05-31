@@ -12,6 +12,25 @@ var PORT = 7000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+var reservations = [
+    {
+        routeName: "tamami",
+        name: "tamami",
+        number: 88888,
+        email: "tamami@hotmail.com",
+        customerid: 1234
+    },
+    {
+        routeName: "michael",
+        name: "michael",
+        number: 99999,
+        email: "mike@hotmail.com",
+        customerid: 5678
+    }
+
+]
+
+
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -20,9 +39,12 @@ app.get("/add", function(req, res) {
     res.sendFile(path.join(__dirname, "form.html"));
 });
 
+
 app.get("/view", function(req, res) {
     res.sendFile(path.join(__dirname, "view.html"));
 });
+
+
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
@@ -38,3 +60,26 @@ app.post("/api/reservations", function(req, res) {
     console.log(newRes);
     res.json(newRes);
 });
+
+// Displays all reservations
+app.get("/api/viewreservations", function(req, res) {
+    return res.json(reservations);
+});
+
+
+app.get("/api/viewreservations/:reservations", function(req, res) {
+    var chosen = req.params.reservations;
+
+    console.log(chosen);
+
+    for (var i = 0; i < reservations.length; i++) {
+        if (chosen === reservations[i].routeName) {
+            return res.json(reservations[i]);
+        }
+    }
+
+    return res.json(false);
+});
+
+
+
